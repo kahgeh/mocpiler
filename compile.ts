@@ -1,7 +1,4 @@
-import {
-  parse as yamlParse,
-  stringify as yamlStringify,
-} from 'https://deno.land/std/encoding/yaml.ts';
+import { yaml } from './deps.ts';
 import { RequestResponse } from './mockServerTypes.ts';
 import { Service } from './types.ts';
 
@@ -30,6 +27,6 @@ export async function compile(
     });
   }
 
-  const mockServerConfig = yamlStringify(config);
+  const mockServerConfig = yaml.stringify(config);
   return Deno.writeTextFile(outputPath, mockServerConfig);
 }
