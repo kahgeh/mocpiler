@@ -11,3 +11,4 @@ export type {
 
 export { DatasetBuilder } from './datasetBuilder.ts';
 export { compile } from './compile.ts';
+export { getFileName } from './utils.ts';
