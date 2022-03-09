@@ -7,7 +7,7 @@ export async function compile(
   datasets: Record<string, RequestResponse[]>[],
   outputPath: string
 ) {
-  let config: any = { services: [] };
+  let config: any = { services: [], management: { port: 9999 } };
 
   for (const service of services) {
     const serviceRequestResponses = datasets.reduce(
