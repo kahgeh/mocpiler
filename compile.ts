@@ -26,7 +26,9 @@ export async function compile(
       ...serviceConfig,
     });
   }
-
+  config.management = {
+    port: 9999,
+  };
   const mockServerConfig = yaml.stringify(config);
   return Deno.writeTextFile(outputPath, mockServerConfig);
 }
