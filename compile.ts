@@ -20,7 +20,7 @@ export async function compile(
     );
     const serviceConfig = {
       ...service,
-      endpoint: serviceRequestResponses,
+      endpoints: serviceRequestResponses,
     };
     config.services.push({
       ...serviceConfig,
