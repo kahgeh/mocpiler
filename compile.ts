@@ -5,7 +5,7 @@ import { Service } from './types.ts';
 export async function compile(
   services: Service[],
   datasets: Record<string, RequestResponse[]>[],
-  outputPath: string
+  outputPath: string = './out.yml'
 ) {
   let config: any = { services: [], management: { port: 9999 } };
 
@@ -13,7 +13,10 @@ export async function compile(
     const serviceRequestResponses = datasets.reduce(
       (rrs: RequestResponse[], ds) => {
         const serviceRequestResponses = ds[service.name];
-        rrs = [...serviceRequestResponses, ...rrs];
+        if (serviceRequestResponses && serviceRequestResponses.length > 0) {
+          return [...serviceRequestResponses, ...rrs];
+        }
+        console.warn(`${service.name} does not have any configuration`);
         return rrs;
       },
       []
