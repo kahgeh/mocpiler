@@ -18,6 +18,7 @@ export class DatasetBuilder {
       this.buildInfo.servicesRequestReponses[service] =
         toRequestResponseRecord(requestResponses);
     }
+    return this;
   }
 
   override(service: string, request: Builder.Request, response: object) {
@@ -27,6 +28,7 @@ export class DatasetBuilder {
       ...request,
       response,
     };
+    return this;
   }
 
   build() {
